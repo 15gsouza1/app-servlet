@@ -39,6 +39,9 @@ public class ServletEditarContato extends HttpServlet {
         
         Contato contato = banco.selectPeloId(Integer.parseInt(id));
         
+        /**
+         * Especificando que a variavel contato será também utilizada no JSP
+         */
         requisicao.setAttribute("contato", contato);
 
         requisicao.getRequestDispatcher("/WEB-INF/contatos/pagina-editar-contato.jsp")
@@ -50,8 +53,6 @@ public class ServletEditarContato extends HttpServlet {
     protected void doPost(HttpServletRequest requisicao, HttpServletResponse resposta)
             throws ServletException, IOException {
         Integer id = Integer.parseInt(requisicao.getParameter("id"));
-        
-        System.out.println(id);
         
         String nome = requisicao.getParameter("nome");
         String email = requisicao.getParameter("email");
